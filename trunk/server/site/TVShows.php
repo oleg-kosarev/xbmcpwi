@@ -32,10 +32,9 @@ $tvshows = json_decode(file_get_contents(dirname(__FILE__)."/../database/json/tv
 			foreach($tvshows as $i=>$tvshow){
 				?>
 				<div class="span3 well blocShow" id="<?=$i?>" name="<?=$tvshow->title?>">
+					<h3> <?=$tvshow->title?> </h3>
 					<? if(filesize(dirname(__FILE__)."/fanart/".$tvshow->title.".tbn") > 0) {?>
 							<img src="fanart/<?=$tvshow->title?>.tbn" name="fanart_<?=$i?>"/>
-					<?}else{?>
-						<h3> <?=$tvshow->title?> </h3>
 					<?}?>
 					Année : <?=$tvshow->year?> <br/>
 					Nbr épisodes : <?=$tvshow->episodes?> <br/>

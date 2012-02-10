@@ -1,7 +1,21 @@
 <?php
 $config = parse_ini_file(dirname(__FILE__)."/xbmc.ini",true);
 
+// met à jour les path du config
+$config["webservice"]["path_to_thumbs"] = dirname(__FILE__)."/..".$config["webservice"]["path_to_thumbs"];
+if(!file_exists($config["webservice"]["path_to_thumbs"])){
+	exit("path_do_thumbs n'existe pas : ".$config["webservice"]["path_to_thumbs"]);
+}
+$config["webservice"]["path_to_fanart"] = dirname(__FILE__)."/..".$config["webservice"]["path_to_fanart"];
+if(!file_exists($config["webservice"]["path_to_fanart"])){
+	exit("path_to_fanart n'existe pas : ".$config["webservice"]["path_to_fanart"]);
+}
 include "xbmc.functions.php";
+
+$check = checkXBMCAlive($config);
+if(!$check){
+	exit("XBMC n'est pas ouvert");
+}
 
 /***********************************************************************************
  * Films

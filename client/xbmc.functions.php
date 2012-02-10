@@ -1,5 +1,12 @@
 <?php
-
+function checkXBMCAlive($config){
+	$curl = curl_init();
+	curl_setopt($curl, CURLOPT_URL, $config["xbmc"]["url"]."/jsonrpc");  
+	curl_setopt($curl, CURLOPT_RETURNTRANSFER,true);
+	$return = curl_exec($curl);
+	if($return == "") return false;
+	return true;
+}
 function getMovies($config){
 	$params = array(
 		"jsonrpc" => "2.0",

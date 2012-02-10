@@ -1,14 +1,18 @@
 <?php
+/**
+ * Représente une série
+ * @author ryo_sensei
+ * Les images sont stockés dans les dossiers /thumbnails et /fanarts avec le nom de la série $title.tbn
+ */
 class TVShow {
 	
-	public $id;
-	public $year;
-	public $title;
-	public $episodes;
-	public $seasons;
-	public $genre;
-	public $resume;
-	public $image;
+	public $id;			// id
+	public $year;		// année
+	public $title;		// titre
+	public $episodes;	// nombre d'épisodes
+	public $seasons;	// liste des saisons et des épisodes
+	public $genre;		// genres
+	public $resume;		// résumé
 	
 	public function feedFromXMBC($feed){
 		$this->id = $feed->tvshowid;

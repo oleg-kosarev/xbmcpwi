@@ -21,17 +21,44 @@ if(!$check){
  * Films
  ***********************************************************************************/
 $movies = getMovies($config);
+$tabTitle = array();
+foreach($movies as $i=>$movie){
+	
+	if(!isset($movie->originaltitle) && !isset($movie->title)){
+		unset($movies[$i]);
+		continue;
+	}
+	$title = str_replace("?","",$movie->originaltitle);
+	if(isset($tabTitle[$title])){
+		unset($movies[$i]);
+		continue;
+	}
+	$tabTitle[$title] = true;
+	
+	if(isset($movie->thumbnail) && !file_exists($config["webservice"]["path_to_thumbs"].$title.".tbn")){
+		$img = file_get_contents($config["xbmc"]["url"].$config["xbmc"]["thumbs"].$movie->thumbnail);
+		file_put_contents($config["webservice"]["path_to_thumbs"].$title.".tbn",$img);
+	}
+	if(isset($movie->fanart) && !file_exists($config["webservice"]["path_to_fanart"].$title.".tbn")){
+		$fanart = file_get_contents($config["xbmc"]["url"].$config["xbmc"]["thumbs"].$movie->fanart);
+		file_put_contents($config["webservice"]["path_to_fanart"].$title.".tbn",$fanart);
+	}
+}
 /***********************************************************************************
  * Séries
  ***********************************************************************************/
 $tvshows = getTVShow($config);
 foreach($tvshows as $i=>$show){
 	// récupère l'image et la met sur le serveur
-	if(isset($show->thumbnail)){
+	if(!isset($show->title)){
+		unset($tvshows[$i]);
+		continue;
+	}
+	if(isset($show->thumbnail) && !file_exists($config["webservice"]["path_to_thumbs"].$show->title.".tbn")){
 		$img = file_get_contents($config["xbmc"]["url"].$config["xbmc"]["thumbs"].$show->thumbnail);
 		file_put_contents($config["webservice"]["path_to_thumbs"].$show->title.".tbn",$img);
 	}
-	if(isset($show->fanart)){
+	if(isset($show->fanart) && !file_exists($config["webservice"]["path_to_fanart"].$show->title.".tbn")){
 		$fanart = file_get_contents($config["xbmc"]["url"].$config["xbmc"]["thumbs"].$show->fanart);
 		file_put_contents($config["webservice"]["path_to_fanart"].$show->title.".tbn",$fanart);
 	}

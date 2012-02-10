@@ -49,7 +49,6 @@ $(document).ready(function(){
 	});
 });
 function showSeason(i){
-		console.log("ok");
 	$("#season_"+i).addClass("active");
 
 }
@@ -60,6 +59,6 @@ function sleep(milliSeconds){
 function goto(i){
 	 $('html, body').animate({  
 	        scrollTop:$("#"+i).offset().top  
-	    }, 'slow');  
-//	$window.location = "#"+i;
+	    }, 'slow');
+	 $("div.#"+i).click();
 }

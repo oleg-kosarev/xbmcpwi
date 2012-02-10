@@ -3,6 +3,11 @@
  */
 $(document).ready(function(){
 	$(document).scrollTop(0);
+	
+	var listTopHeight = $(".listTop").css("height");
+	listTopHeight = parseInt(listTopHeight.replace("px",""));
+	$("div.showDescription").css("top",listTopHeight+85);
+	
 	$(document).scroll(function(){
 		var scrollDocument = $(document).scrollTop();
 		var listTopHeight = $(".listTop").css("height");
@@ -24,7 +29,7 @@ $(document).ready(function(){
 				$("<div></div>")
 				.css("text-align","center")
 				.append(
-						$("<img/>",{ src: "/php-media/server/site/images/ajax-loader.gif"})
+						$("<img/>",{ src: "images/ajax-loader.gif"})
 				)
 		);
 		$.ajax({
@@ -33,6 +38,7 @@ $(document).ready(function(){
 			success: function(data){
 				$("div.showDescription").html("");
 				$("div.showDescription").append(data);
+				
 //				setTimeout('$("div.showDescription").show("fade");',500);
 			}
 		});

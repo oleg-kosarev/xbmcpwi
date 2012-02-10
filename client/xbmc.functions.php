@@ -13,7 +13,7 @@ function getMovies($config){
 		"method" => "VideoLibrary.GetMovies",
 		"params" => array(
 			"fields"=> array(
-				"genre", "director", "trailer", "tagline", "plot", "plotoutline", "title", "originaltitle", "lastplayed", "showtitle", "firstaired", "duration", "season", "episode", "runtime", "year", "playcount", "rating"
+				"genre", "director", "actor", "trailer", "tagline", "plot", "plotoutline", "title", "originaltitle", "lastplayed", "showtitle", "firstaired", "duration", "season", "episode", "runtime", "year", "playcount", "rating"
 			)
 		),
 		"id" => 0
@@ -67,8 +67,12 @@ function getSeasons($config,$tvshowid){
 	curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($params));
 	curl_setopt($curl, CURLOPT_RETURNTRANSFER,true);
 	$return = json_decode(curl_exec($curl));
-	$seasons = $return->result->seasons;
-	return $seasons;
+	if(isset($return->result->seasons)) {
+		$seasons = $return->result->seasons;
+		return $seasons;
+	}else{
+		return array();
+	}
 }
 function getEpisodes($config,$tvshowid,$seasonid){
 	$params = array(

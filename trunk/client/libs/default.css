@@ -1,0 +1,10 @@
+@CHARSET "UTF-8";
+input.input{
+	height: 40px;
+	width: 400px;
+	font-size: 30px;
+}
+button.btn-success {
+	height: 40px;
+	font-size: 20px;
+}

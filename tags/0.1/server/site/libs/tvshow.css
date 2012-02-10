@@ -1,0 +1,25 @@
+@CHARSET "UTF-8";
+body {
+	background-color: #eee;
+	background-position: center center;
+	background-attachment:fixed;
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+div.container {
+	background: #FFF;
+	padding-top: 25px;
+	opacity: 0.9;
+}
+div.showDescription {
+	background: #FFF;
+	position: absolute;
+	margin-left: 325px;
+	overflow-y:scroll;
+}
+div.blocShow {
+ 
+ 
+ 
+ 
+}

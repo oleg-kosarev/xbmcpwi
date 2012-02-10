@@ -1,0 +1,7 @@
+#README
+Pour que tout fonctionne, il faut bien vérifier q ue XBMC est ouvert, et que le controle via HTTP est actif.
+
+Dans xbmc.ini : 
+- Entrer l'url de l'interface web d'XBMC, avec le port
+- Dans la partie webservice, vérifier l'url qui mène au script xbmc_feed.php
+- Entrez le path complet vers les dossiers server/site/thumbnails/ et server/site/fanart

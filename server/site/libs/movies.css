@@ -1,1 +1,22 @@
 @CHARSET "UTF-8";
+body {
+	background-color: #eee;
+	background-position: center center;
+	background-attachment:fixed;
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+div.container {
+	margin-top: 25px;
+	opacity: 0.8;
+}
+div.modal {
+	display: none;
+	width: 600px;
+}
+li.affiche {
+	height: 180px;
+	}
+li.affiche img {
+	max-height: 150px;
+}

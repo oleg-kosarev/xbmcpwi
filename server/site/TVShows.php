@@ -11,7 +11,7 @@ $tvshows = json_decode(file_get_contents(dirname(__FILE__)."/../database/json/tv
 		<link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
 		<script src="libs/bootstrap/js/bootstrap.min.js"></script>
 		
-		<link href="libs/tvshows.css" rel="stylesheet"/>
+		<link href="libs/tvshow.css" rel="stylesheet"/>
 		<script src="libs/tvshows.js"></script>
 		
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
